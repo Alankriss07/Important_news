@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For Mehak</title>
+
+<style>
+:root {
+  --pink: #ff2d55;
+  --light-pink: #ffe3ea;
+  --bg: linear-gradient(180deg, #ff7aa2, #ffb3c7);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+               "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: env(safe-area-inset-top)
+           env(safe-area-inset-right)
+           env(safe-area-inset-bottom)
+           env(safe-area-inset-left);
+}
+
+.card {
+  width: 100%;
+  max-width: 390px;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 30px 24px 34px;
+  text-align: center;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.22);
+  animation: fadeUp 0.8s ease;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.9rem;
+  color: var(--pink);
+}
+
+.story {
+  margin-top: 16px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+.question {
+  margin-top: 22px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.buttons {
+  margin-top: 28px;
+  display: flex;
+  gap: 14px;
+}
+
+button {
+  flex: 1;
+  min-height: 48px;
+  border-radius: 999px;
+  border: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+.yes {
+  background: var(--pink);
+  color: #fff;
+}
+
+.no {
+  background: var(--light-pink);
+  color: var(--pink);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
+<script>
+let noCount = 0;
+
+function yesClicked() {
+  const card = document.querySelector(".card");
+  card.innerHTML = `
+    <h1>Mehak</h1>
+    <p class="story">
+      You just made a Pahadi boy’s heart the happiest place on earth.<br><br>
+      I promise to stand by you, respect you,
+      and love you a little more every single day.
+    </p>
+    <div class="question">Happy Valentine’s Day ❤️</div>
+    <p class="story">— Somil</p>
+  `;
+}
+
+function noClicked(btn) {
+  noCount++;
+
+  if (noCount === 1) {
+    btn.textContent = "Are you sure?";
+  } else if (noCount === 2) {
+    btn.textContent = "Think again 🙈";
+  } else if (noCount === 3) {
+    btn.textContent = "Okay… tap me ❤️";
+    btn.className = "yes";
+    btn.onclick = yesClicked;
+  }
+}
+</script>
+</head>
+
+<body>
+  <div class="card">
+    <h1>Hey Mehak</h1>
+
+    <p class="story">
+      This Punjabi girl stole the heart of<br>
+      <strong>Somil Swapnil Chandra</strong>,<br>
+      a Pahadi boy who never believed in love like this.<br><br>
+      And now, with all his heart,
+      he wants to ask her one simple question…
+    </p>
+
+    <div class="question">
+      Will you be his Valentine? 💖
+    </div>
+
+    <div class="buttons">
+      <button class="yes" onclick="yesClicked()">Yes 💕</button>
+      <button class="no" onclick="noClicked(this)">No 🙈</button>
+    </div>
+  </div>
+</body>
+</html>
